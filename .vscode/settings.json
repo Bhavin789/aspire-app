@@ -1,0 +1,10 @@
+{
+    "eslint.workingDirectories": [
+        {
+            "directory": ".",
+            "changeProcessCWD": true
+        }
+    ],
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.formatOnSave": true,
+}
