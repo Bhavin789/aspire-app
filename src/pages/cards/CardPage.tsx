@@ -4,6 +4,8 @@ import { styled } from "styled-components";
 import PrimaryButton from "../../components/generic/PrimaryButton";
 import Card from "./components/Card";
 import CardActivity from "./components/card-activity/CardActivity";
+import Accordion from "../../components/generic/Accordion";
+import TransactionsList from "./components/recent-transactions/TransactionsList";
 
 const { Content } = Layout;
 
@@ -49,6 +51,10 @@ const CardsPage = () => {
                         cardNumber={123}
                     />
                     <CardActivity />
+                    <Accordion
+                        text="Recent transactions"
+                        content={<TransactionsList />}
+                    />
                 </Content>
             </ContentWrapper>
         </CardsPageWrapper>
