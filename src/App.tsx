@@ -3,6 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import FullWidthWrapper from "./components/generic/FullWidthWrapper";
 import SideMenu from "./components/menu/SideMenu";
+import AvailableBalance from "./components/AvailableBalance";
 
 const { Header, Content } = Layout;
 
@@ -39,14 +40,14 @@ const App: React.FC = () => {
                     </Header>
                     <Content
                         style={{
-                            margin: "24px 16px",
+                            margin: "24px 60px",
                             padding: 24,
                             minHeight: 280,
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG
                         }}
                     >
-                        Content
+                        <AvailableBalance availableBalance={100} />
                     </Content>
                 </Layout>
             </Layout>
