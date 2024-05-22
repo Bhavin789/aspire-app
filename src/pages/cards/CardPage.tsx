@@ -2,6 +2,8 @@ import { Layout, theme } from "antd";
 import AvailableBalance from "./components/AvailableBalance";
 import { styled } from "styled-components";
 import PrimaryButton from "../../components/generic/PrimaryButton";
+import Card from "./components/Card";
+import CardActivity from "./components/card-activity/CardActivity";
 
 const { Content } = Layout;
 
@@ -38,7 +40,16 @@ const CardsPage = () => {
                         background: colorBgContainer,
                         borderRadius: borderRadiusLG
                     }}
-                />
+                >
+                    <Card
+                        name="Bhavin Agarwal"
+                        cvv={123}
+                        expiry=""
+                        type=""
+                        cardNumber={123}
+                    />
+                    <CardActivity />
+                </Content>
             </ContentWrapper>
         </CardsPageWrapper>
     );
