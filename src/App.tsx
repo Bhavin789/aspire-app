@@ -21,9 +21,9 @@ const App: React.FC = () => {
 
     return (
         <FullWidthWrapper>
-            <Layout style={{ height: "100%" }}>
+            <Layout hasSider={true}>
                 <SideMenu isCollapsed={isCollapsed} />
-                <Layout>
+                <Layout style={{ marginLeft: 340 }}>
                     <ContentWrapper>
                         <CardsPage />
                     </ContentWrapper>

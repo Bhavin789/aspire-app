@@ -8,6 +8,8 @@ import Accordion from "../../components/generic/Accordion";
 import TransactionsList from "./components/recent-transactions/TransactionsList";
 
 import recentTransactionsIcon from "../../assets/recent-transactions.svg";
+import cardDetailsIcon from "../../assets/details.svg";
+
 import Tabs from "../../components/generic/Tabs";
 
 const { Content } = Layout;
@@ -30,6 +32,19 @@ const CardsPageWrapper = styled.div`
 const AccordionIcon = styled.img`
     height: 24px;
     width: fit-content;
+`;
+
+const TransactionWrapper = styled.div`
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+`;
+
+const CardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 `;
 
 const CardsPage = () => {
@@ -61,27 +76,40 @@ const CardsPage = () => {
                     padding: 24,
                     minHeight: 280,
                     background: colorBgContainer,
-                    borderRadius: borderRadiusLG
+                    borderRadius: borderRadiusLG,
+                    display: "flex",
+                    gap: 46
                 }}
             >
-                <Card
-                    name="Bhavin Agarwal"
-                    cvv={123}
-                    expiry=""
-                    type=""
-                    cardNumber={123}
-                />
-                <CardActivity />
-                <Accordion
-                    text="Recent transactions"
-                    content={<TransactionsList />}
-                    icon={
-                        <AccordionIcon
-                            src={recentTransactionsIcon}
-                            alt="logo"
-                        />
-                    }
-                />
+                <CardWrapper>
+                    <Card
+                        name="Bhavin Agarwal"
+                        cvv={123}
+                        expiry=""
+                        type=""
+                        cardNumber={123}
+                    />
+                    <CardActivity />
+                </CardWrapper>
+                <TransactionWrapper>
+                    <Accordion
+                        text="Card Details"
+                        content={<TransactionsList />}
+                        icon={
+                            <AccordionIcon src={cardDetailsIcon} alt="logo" />
+                        }
+                    />
+                    <Accordion
+                        text="Recent transactions"
+                        content={<TransactionsList />}
+                        icon={
+                            <AccordionIcon
+                                src={recentTransactionsIcon}
+                                alt="logo"
+                            />
+                        }
+                    />
+                </TransactionWrapper>
             </Content>
         </CardsPageWrapper>
     );

@@ -38,7 +38,15 @@ const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {
                 collapsible
                 collapsed={isCollapsed}
                 width={340}
-                style={{ background: colorTokens.light.sideMenu }}
+                style={{
+                    background: colorTokens.light.sideMenu,
+                    overflow: "auto",
+                    height: "100vh",
+                    position: "fixed",
+                    left: 0,
+                    top: 0,
+                    bottom: 0
+                }}
             >
                 <AspireSideLogo />
                 <Menu
