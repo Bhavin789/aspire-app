@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colorTokens } from "../designTokens";
+import { colorTokens } from "../../../designTokens";
 
 const AvailableBalanceWrapper = styled.div`
     display: flex;
