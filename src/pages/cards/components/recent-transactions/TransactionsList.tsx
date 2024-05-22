@@ -2,9 +2,23 @@ import { styled } from "styled-components";
 
 import { SettingOutlined } from "@ant-design/icons";
 import Transaction from "./Transaction";
+import {
+    TransactionType,
+    VendorType,
+    VendorTypeToColor
+} from "../../../../constants/common";
+import TransactionIcon from "./TransactionIcon";
 
 const TransactionsListWrapper = styled.div`
     padding: 38px 24px;
+`;
+
+const TransactionIconWrapper = styled.img<{ type: VendorType }>`
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    width: fit-content;
+    background: ${props => VendorTypeToColor[props.type]};
 `;
 
 const TransactionsList = () => {
@@ -14,29 +28,30 @@ const TransactionsList = () => {
         date: string;
         meta: string;
         amount: number;
-        type: "credit" | "debit";
+        type: TransactionType;
     }[] = [
         {
             vendor: "Hamleys",
             date: "2021/02/03",
             meta: "Charged to debit card",
             amount: 150,
-            type: "debit",
-            icon: <SettingOutlined />
+            type: TransactionType.debit,
+            icon: <TransactionIcon vendorType={VendorType.ecom} />
         },
         {
-            vendor: "Hamleys",
+            vendor: "Flights",
             date: "2021/02/03",
             meta: "Charged to debit card",
             amount: 150,
-            type: "credit",
-            icon: <SettingOutlined />
+            type: TransactionType.credit,
+            icon: <TransactionIcon vendorType={VendorType.flights} />
         }
     ];
 
     return (
         <TransactionsListWrapper>
-            {transactions.map(transaction => {
+            {transactions.map((transaction, index) => {
+                const isLast = index === transactions.length - 1;
                 const { vendor, amount, meta, type, icon, date } = transaction;
 
                 return (
@@ -47,6 +62,7 @@ const TransactionsList = () => {
                         icon={icon}
                         date={date}
                         meta={meta}
+                        isLast={isLast}
                     />
                 );
             })}

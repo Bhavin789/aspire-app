@@ -12,6 +12,7 @@ const ActivityItemWrapper = styled.div`
 
 const ActivityText = styled.span`
     font-size: 13px;
+    margin-top: 8px;
     color: ${() => colorTokens.light.activityCard.text};
     text-align: center;
 `;

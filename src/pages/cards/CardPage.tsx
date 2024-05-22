@@ -7,6 +7,8 @@ import CardActivity from "./components/card-activity/CardActivity";
 import Accordion from "../../components/generic/Accordion";
 import TransactionsList from "./components/recent-transactions/TransactionsList";
 
+import recentTransactionsIcon from "../../assets/recent-transactions.svg";
+
 const { Content } = Layout;
 
 const CardPageHeaderWrapper = styled.div`
@@ -21,6 +23,11 @@ const ContentWrapper = styled.div`
 
 const CardsPageWrapper = styled.div`
     margin-top: 35px;
+`;
+
+const AccordionIcon = styled.img`
+    height: 24px;
+    width: fit-content;
 `;
 
 const CardsPage = () => {
@@ -54,6 +61,12 @@ const CardsPage = () => {
                     <Accordion
                         text="Recent transactions"
                         content={<TransactionsList />}
+                        icon={
+                            <AccordionIcon
+                                src={recentTransactionsIcon}
+                                alt="logo"
+                            />
+                        }
                     />
                 </Content>
             </ContentWrapper>

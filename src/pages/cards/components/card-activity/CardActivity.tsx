@@ -4,6 +4,12 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import ActivityItem from "./ActivityItem";
 import { colorTokens } from "../../../../designTokens";
 
+import freezeCardLogo from "../../../../assets/freeze-card.svg";
+import spendLimitLogo from "../../../../assets/spend-limit.svg";
+import replaceCardLogo from "../../../../assets/replace-card.svg";
+import deactivateCardLogo from "../../../../assets/deactivate-card.svg";
+import gpayLogo from "../../../../assets/gpay.svg";
+
 const CardActivityItemsWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -12,6 +18,11 @@ const CardActivityItemsWrapper = styled.div`
     gap: 30px;
     align-items: baseline;
     height: 50%;
+`;
+
+const Logo = styled.img`
+    height: 35px;
+    width: fit-content;
 `;
 
 const CardActivityWrapper = styled.div`
@@ -26,23 +37,23 @@ const CardActivityWrapper = styled.div`
 const cardActivities = [
     {
         text: "Freeze Card",
-        icon: <MenuFoldOutlined />
+        icon: <Logo src={freezeCardLogo} alt="logo" />
     },
     {
         text: "Set Spend Limit",
-        icon: <MenuFoldOutlined />
+        icon: <Logo src={spendLimitLogo} alt="logo" />
     },
     {
         text: "Add to GPay",
-        icon: <MenuFoldOutlined />
+        icon: <Logo src={gpayLogo} alt="logo" />
     },
     {
         text: "Replace Card",
-        icon: <MenuFoldOutlined />
+        icon: <Logo src={replaceCardLogo} alt="logo" />
     },
     {
         text: "Cancel Card",
-        icon: <MenuFoldOutlined />
+        icon: <Logo src={deactivateCardLogo} alt="logo" />
     }
 ];
 
