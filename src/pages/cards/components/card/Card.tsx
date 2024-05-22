@@ -1,7 +1,15 @@
 import { styled } from "styled-components";
-import { colorTokens } from "../../../designTokens";
+import { colorTokens } from "../../../../designTokens";
+import ShowCard from "./ShowCard";
 
 const CardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 414px;
+`;
+
+const CardContainer = styled.div`
+    margin-top: 12px;
     width: 414px;
     height: 248px;
     border-radius: 8px;
@@ -21,7 +29,12 @@ const Card = ({
     cardNumber: number;
     type: string;
 }) => {
-    return <CardWrapper />;
+    return (
+        <CardWrapper>
+            <ShowCard />
+            <CardContainer />
+        </CardWrapper>
+    );
 };
 
 export default Card;

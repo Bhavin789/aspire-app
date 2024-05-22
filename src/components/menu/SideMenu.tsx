@@ -24,6 +24,10 @@ const SideMenuWrapper = styled.div`
     .ant-layout-sider {
         height: 100%;
     }
+
+    .ant-menu-title-content {
+        margin-left: 16px;
+    }
 `;
 
 const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {

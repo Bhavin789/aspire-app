@@ -15,6 +15,9 @@ export const colorTokens = {
         },
         accordion: {
             background: "#f5f9ff"
+        },
+        tabs: {
+            border: "#23CEFD"
         }
     },
     dark: {}

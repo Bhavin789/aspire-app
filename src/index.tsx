@@ -9,6 +9,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body, html {
     height: 100%;
+    font-family: "Open Sans", sans-serif;
   }
 
   #root {
