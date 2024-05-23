@@ -47,6 +47,8 @@ const StyledCarousel = styled(AntdCarousel)`
 const Carousel = ({ items, autoPlay }: CarouselProps) => (
     <StyledCarousel
         autoplay={autoPlay}
+        fade={true}
+        effect={"fade"}
         style={{ width: "414px", height: "248px", borderRadius: "8px" }}
     >
         {items.map(item => {
