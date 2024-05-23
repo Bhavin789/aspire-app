@@ -10,6 +10,7 @@ const StyledButton = styled.button`
     border: none;
     font-size: 13px;
     font-weight: 600;
+    align-self: end;
 `;
 
 const PrimaryButton = ({

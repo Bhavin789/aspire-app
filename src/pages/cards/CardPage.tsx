@@ -85,9 +85,9 @@ const CardsPage = () => {
                     <Card
                         name="Bhavin Agarwal"
                         cvv={123}
-                        expiry=""
-                        type=""
-                        cardNumber={123}
+                        expiry="2023/02"
+                        type="visa"
+                        cardNumber={"1234567812345678"}
                     />
                     <CardActivity />
                 </CardWrapper>

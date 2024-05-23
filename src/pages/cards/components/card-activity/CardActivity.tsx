@@ -32,6 +32,7 @@ const CardActivityWrapper = styled.div`
     background: ${() => colorTokens.light.activityCard.background};
     height: 116px;
     align-items: center;
+    padding: 0 18px;
 `;
 
 const cardActivities = [

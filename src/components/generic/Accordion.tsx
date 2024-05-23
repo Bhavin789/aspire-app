@@ -27,6 +27,10 @@ const AccordionWrapper = styled.div`
     .ant-collapse-expand-icon {
         margin: auto;
     }
+
+    .ant-collapse-content {
+        border-top: ${() => `1px solid ${colorTokens.light.border}`};
+    }
 `;
 
 const AccordionHeaderWrapper = styled.div`
