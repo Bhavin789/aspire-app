@@ -1,7 +1,6 @@
 import { Layout, theme } from "antd";
 import AvailableBalance from "./components/AvailableBalance";
 import { styled } from "styled-components";
-import PrimaryButton from "../../components/generic/PrimaryButton";
 import Card from "./components/card/Card";
 import CardActivity from "./components/card-activity/CardActivity";
 import Accordion from "../../components/generic/Accordion";
@@ -11,6 +10,7 @@ import recentTransactionsIcon from "../../assets/recent-transactions.svg";
 import cardDetailsIcon from "../../assets/details.svg";
 
 import Tabs from "../../components/generic/Tabs";
+import NewCardModal from "./components/NewCardModal";
 
 const { Content } = Layout;
 
@@ -60,7 +60,7 @@ const CardsPage = () => {
         <CardsPageWrapper>
             <CardPageHeaderWrapper>
                 <AvailableBalance availableBalance={100} />
-                <PrimaryButton text="New Card" />
+                <NewCardModal />
             </CardPageHeaderWrapper>
             <TabWrapper>
                 <Tabs

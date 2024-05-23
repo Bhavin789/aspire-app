@@ -13,15 +13,13 @@ const StyledButton = styled.button`
     align-self: end;
 `;
 
-const PrimaryButton = ({
-    onClick,
-    text,
-    icon
-}: {
-    onClick?: React.MouseEventHandler;
+interface PrimaryButtonProps {
+    onClick: React.MouseEventHandler;
     text: string;
     icon?: React.ReactNode;
-}) => {
+}
+
+const PrimaryButton = ({ onClick, text, icon }: PrimaryButtonProps) => {
     return <StyledButton onClick={onClick}>{text}</StyledButton>;
 };
 

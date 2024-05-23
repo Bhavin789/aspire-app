@@ -14,3 +14,5 @@ export const VendorTypeToColor = {
     [VendorType.flights]: "#00D6B51A",
     [VendorType.alert]: "#F251951A"
 };
+
+export const CARDS_LOCAL_STORAGE_KEY = "cards";
