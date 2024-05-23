@@ -1,6 +1,6 @@
 export type CreditCardDetails = {
     cardNumber: string;
-    cvv: string;
+    cvv: number;
     expiryDate: string;
     cardName: string;
 };

@@ -1,8 +1,6 @@
 import { Layout, theme } from "antd";
 import AvailableBalance from "./components/AvailableBalance";
 import { styled } from "styled-components";
-import Card from "./components/card/Card";
-import CardActivity from "./components/card-activity/CardActivity";
 import Accordion from "../../components/generic/Accordion";
 import TransactionsList from "./components/recent-transactions/TransactionsList";
 
@@ -11,6 +9,7 @@ import cardDetailsIcon from "../../assets/details.svg";
 
 import Tabs from "../../components/generic/Tabs";
 import NewCardModal from "./components/NewCardModal";
+import CardsArea from "./components/cards-area/CardsArea";
 
 const { Content } = Layout;
 
@@ -41,18 +40,12 @@ const TransactionWrapper = styled.div`
     gap: 24px;
 `;
 
-const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-`;
-
 const CardsPage = () => {
     const {
         token: { colorBgContainer, borderRadiusLG }
     } = theme.useToken();
 
-    const handleClick = (key: string) => {
+    const handleTabClick = (key: string) => {
         console.log(key);
     };
 
@@ -68,7 +61,7 @@ const CardsPage = () => {
                         { label: "My debit cards", key: "debitCard" },
                         { label: "My company cards", key: "companyCard" }
                     ]}
-                    onClick={handleClick}
+                    onClick={handleTabClick}
                 />
             </TabWrapper>
             <Content
@@ -81,16 +74,7 @@ const CardsPage = () => {
                     gap: 46
                 }}
             >
-                <CardWrapper>
-                    <Card
-                        name="Bhavin Agarwal"
-                        cvv={123}
-                        expiry="2023/02"
-                        type="visa"
-                        cardNumber={"1234567812345678"}
-                    />
-                    <CardActivity />
-                </CardWrapper>
+                <CardsArea />
                 <TransactionWrapper>
                     <Accordion
                         text="Card Details"

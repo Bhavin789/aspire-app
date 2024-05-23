@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colorTokens } from "../../../../designTokens";
+import { colorTokens } from "../../../../../designTokens";
 
 const ActivityItemWrapper = styled.div`
     display: flex;
@@ -8,6 +8,7 @@ const ActivityItemWrapper = styled.div`
     justify-content: center;
     width: 80px;
     height: 36px;
+    cursor: pointer;
 `;
 
 const ActivityText = styled.span`
@@ -22,15 +23,25 @@ const ActivityIcon = styled.div`
     min-height: 32px;
 `;
 
-const ActivityItem = ({
-    text,
-    icon: Icon
-}: {
+interface ActivityItemProps {
     text: string;
     icon: JSX.Element;
-}) => {
+    itemKey: string;
+    onClick: (key: string) => void;
+}
+
+const ActivityItem = ({
+    text,
+    itemKey,
+    icon: Icon,
+    onClick
+}: ActivityItemProps) => {
+    const handleClick = () => {
+        onClick(itemKey);
+    };
+
     return (
-        <ActivityItemWrapper>
+        <ActivityItemWrapper onClick={handleClick}>
             <ActivityIcon>{Icon}</ActivityIcon>
             <ActivityText>{text}</ActivityText>
         </ActivityItemWrapper>

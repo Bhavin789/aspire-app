@@ -16,7 +16,7 @@ const generateCardNumber = (): string => {
     return cardNumber;
 };
 
-const generateCVV = (): string => generateRandomNumber(3);
+const generateCVV = (): number => Number(generateRandomNumber(3));
 
 const generateExpiryDate = (): string => {
     const month = Math.floor(Math.random() * 12) + 1;

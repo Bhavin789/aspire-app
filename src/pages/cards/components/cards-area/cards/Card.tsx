@@ -1,17 +1,10 @@
 import { styled } from "styled-components";
-import { colorTokens } from "../../../../designTokens";
-import ShowCard from "./ShowCard";
+import { colorTokens } from "../../../../../designTokens";
 
-import aspireLogo from "../../../../assets/aspire-white.svg";
-import visaLogo from "../../../../assets/visa.svg";
+import aspireLogo from "../../../../../assets/aspire-white.svg";
+import visaLogo from "../../../../../assets/visa.svg";
 
 import CardNumber from "./CardNumber";
-
-const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 414px;
-`;
 
 const Logo = styled.img`
     align-self: end;
@@ -55,8 +48,6 @@ const CardCVVWrapper = styled.span`
     margin-left: 8px;
 `;
 
-const CardType = styled.div``;
-
 const CardContainer = styled.div`
     margin-top: 12px;
     width: 414px;
@@ -73,7 +64,6 @@ interface CardProps {
     cvv: number;
     expiry: string;
     cardNumber: string;
-    type: string;
     shouldShowCardNumber?: boolean;
 }
 
@@ -82,31 +72,27 @@ const Card = ({
     cvv,
     expiry,
     cardNumber,
-    type,
     shouldShowCardNumber
 }: CardProps) => {
     return (
-        <CardWrapper>
-            <ShowCard />
-            <CardContainer>
-                <Logo src={aspireLogo} alt="aspire-logo" />
-                <CardName>{name}</CardName>
-                <CardNumberWrapper>
-                    <CardNumber
-                        showNumber={shouldShowCardNumber}
-                        cardNumber={cardNumber}
-                    />
-                </CardNumberWrapper>
-                <CardExpiryWrapper>
-                    <CardExpiry>Thru: {expiry}</CardExpiry>
-                    <CardCVV>
-                        <span>{"CVV:   "}</span>
-                        <CardCVVWrapper>***</CardCVVWrapper>
-                    </CardCVV>
-                </CardExpiryWrapper>
-                <Logo src={visaLogo} alt="aspire-logo" />
-            </CardContainer>
-        </CardWrapper>
+        <CardContainer>
+            <Logo src={aspireLogo} alt="aspire-logo" />
+            <CardName>{name}</CardName>
+            <CardNumberWrapper>
+                <CardNumber
+                    showNumber={shouldShowCardNumber}
+                    cardNumber={cardNumber}
+                />
+            </CardNumberWrapper>
+            <CardExpiryWrapper>
+                <CardExpiry>Thru: {expiry}</CardExpiry>
+                <CardCVV>
+                    <span>{"CVV:   "}</span>
+                    <CardCVVWrapper>***</CardCVVWrapper>
+                </CardCVV>
+            </CardExpiryWrapper>
+            <Logo src={visaLogo} alt="aspire-logo" />
+        </CardContainer>
     );
 };
 

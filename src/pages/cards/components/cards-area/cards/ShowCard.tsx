@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { colorTokens } from "../../../../designTokens";
+import { colorTokens } from "../../../../../designTokens";
 
-import eyeIcon from "../../../../assets/eye.svg";
+import eyeIcon from "../../../../../assets/eye.svg";
 
 const ShowCardWrapper = styled.div`
     display: flex;
