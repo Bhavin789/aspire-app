@@ -69,7 +69,6 @@ const CardsPage = () => {
                 style={{
                     padding: 24,
                     minHeight: 280,
-                    // background: colorBgContainer,
                     borderRadius: borderRadiusLG,
                     display: "flex",
                     gap: 46,

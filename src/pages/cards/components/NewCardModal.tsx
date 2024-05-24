@@ -10,6 +10,8 @@ import {
     CARDS_LOCAL_STORAGE_KEY
 } from "../../../constants/common";
 import Input from "../../../components/generic/Input";
+import { useDispatch } from "react-redux";
+import cardsSlice from "../../../store/slices/cardsSlice";
 
 const ContentWrapper = styled.div`
     min-height: 200px;
@@ -42,22 +44,11 @@ const NewCardModal: React.FC = () => {
         setIsModalOpen(true);
     };
 
-    const saveCardDetails = (cardDetails: CreditCardDetails) => {
-        const existingCards = localStorage.getItem(CARDS_LOCAL_STORAGE_KEY);
-        let cardsArray: CreditCardDetails[] = existingCards
-            ? JSON.parse(existingCards)
-            : [];
-
-        cardsArray.push(cardDetails);
-        localStorage.setItem(
-            CARDS_LOCAL_STORAGE_KEY,
-            JSON.stringify(cardsArray)
-        );
-    };
+    const dispatch = useDispatch();
 
     const handleOk = () => {
         const cardDetails = generateRandomCreditCardDetails(cardName);
-        saveCardDetails(cardDetails);
+        dispatch(cardsSlice.actions.appendCardDetails(cardDetails));
         setIsModalOpen(false);
     };
 

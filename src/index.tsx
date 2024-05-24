@@ -4,7 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { Provider } from "react-redux";
+
 import { createGlobalStyle } from "styled-components";
+import { store } from "./store/store";
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -23,7 +26,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <GlobalStyle />
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </React.StrictMode>
 );
 
