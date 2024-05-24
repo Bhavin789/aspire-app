@@ -1,15 +1,35 @@
 import React, { useState } from "react";
-import { Button, Modal, Input } from "antd";
+import { Modal } from "antd";
 import PrimaryButton from "../../../components/generic/PrimaryButton";
 import { styled } from "styled-components";
 import debounce from "lodash.debounce";
 import { generateRandomCreditCardDetails } from "../../../utils/getRandomCardDetails";
 import { CreditCardDetails } from "../../../types/CardDetails";
-import { CARDS_LOCAL_STORAGE_KEY } from "../../../constants/common";
+import {
+    ButtonVariant,
+    CARDS_LOCAL_STORAGE_KEY
+} from "../../../constants/common";
+import Input from "../../../components/generic/Input";
 
 const ContentWrapper = styled.div`
     min-height: 200px;
     margin: auto;
+`;
+
+const FooterWrapper = styled.div`
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 8px;
+`;
+
+const StyledModal = styled(Modal)`
+    .ant-modal-header {
+        .ant-modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
 `;
 
 const NewCardModal: React.FC = () => {
@@ -53,10 +73,27 @@ const NewCardModal: React.FC = () => {
         500
     );
 
+    const buttons = [
+        <PrimaryButton
+            text={"Cancel"}
+            variant={ButtonVariant.primary}
+            onClick={handleCancel}
+        />,
+        <PrimaryButton
+            text={"Add"}
+            variant={ButtonVariant.brand}
+            onClick={handleOk}
+        />
+    ];
+
     return (
         <>
-            <PrimaryButton text="New Card" onClick={handleShowModal} />
-            <Modal
+            <PrimaryButton
+                text="New Card"
+                onClick={handleShowModal}
+                variant={ButtonVariant.primary}
+            />
+            <StyledModal
                 title="Add new card"
                 open={isModalOpen}
                 onOk={handleOk}
@@ -64,6 +101,7 @@ const NewCardModal: React.FC = () => {
                 onCancel={handleCancel}
                 centered={true}
                 destroyOnClose={true}
+                footer={<FooterWrapper>{buttons}</FooterWrapper>}
             >
                 <ContentWrapper>
                     <Input
@@ -71,7 +109,7 @@ const NewCardModal: React.FC = () => {
                         onChange={handleInputChange}
                     />
                 </ContentWrapper>
-            </Modal>
+            </StyledModal>
         </>
     );
 };

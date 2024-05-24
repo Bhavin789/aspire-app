@@ -7,7 +7,8 @@ export const colorTokens = {
         brand: "#01D167",
         border: "#F5F5F5",
         button: {
-            primary: "#325BAF"
+            primary: "#325BAF",
+            brand: "#01D167"
         },
         activityCard: {
             background: "#EDF3FF",

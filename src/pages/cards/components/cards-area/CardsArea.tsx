@@ -13,7 +13,7 @@ import gpayLogo from "../../../../assets/gpay.svg";
 const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 48px;
 `;
 
 const Logo = styled.img`

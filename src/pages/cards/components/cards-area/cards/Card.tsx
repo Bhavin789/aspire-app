@@ -49,9 +49,9 @@ const CardCVVWrapper = styled.span`
 `;
 
 const CardContainer = styled.div`
-    margin-top: 12px;
+    /* margin-top: 12px; */
     width: 414px;
-    height: 248px;
+    height: 264px;
     border-radius: 8px;
     background: ${() => colorTokens.light.brand};
     display: flex;

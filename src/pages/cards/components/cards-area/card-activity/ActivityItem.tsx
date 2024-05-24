@@ -6,7 +6,7 @@ const ActivityItemWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px;
+    width: 64px;
     height: 36px;
     cursor: pointer;
 `;

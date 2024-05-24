@@ -11,6 +11,7 @@ const { Header, Content } = Layout;
 
 const ContentWrapper = styled.div`
     margin: 24px 60px;
+    background: white;
 `;
 
 const App: React.FC = () => {
@@ -23,7 +24,7 @@ const App: React.FC = () => {
         <FullWidthWrapper>
             <Layout hasSider={true}>
                 <SideMenu isCollapsed={isCollapsed} />
-                <Layout style={{ marginLeft: 340 }}>
+                <Layout style={{ marginLeft: 340, background: "white" }}>
                     <ContentWrapper>
                         <CardsPage />
                     </ContentWrapper>

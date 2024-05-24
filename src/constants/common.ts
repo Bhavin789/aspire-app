@@ -15,4 +15,9 @@ export const VendorTypeToColor = {
     [VendorType.alert]: "#F251951A"
 };
 
+export enum ButtonVariant {
+    primary = "primary",
+    brand = "brand"
+}
+
 export const CARDS_LOCAL_STORAGE_KEY = "cards";

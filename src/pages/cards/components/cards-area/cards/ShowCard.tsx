@@ -6,6 +6,7 @@ import eyeIcon from "../../../../../assets/eye.svg";
 const ShowCardWrapper = styled.div`
     display: flex;
     margin-left: auto;
+    margin-bottom: 12px;
 `;
 
 const ShowCardText = styled.div`

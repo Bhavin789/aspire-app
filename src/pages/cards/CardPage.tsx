@@ -26,6 +26,7 @@ const TabWrapper = styled.div`
 
 const CardsPageWrapper = styled.div`
     margin-top: 35px;
+    background: white;
 `;
 
 const AccordionIcon = styled.img`
@@ -68,10 +69,12 @@ const CardsPage = () => {
                 style={{
                     padding: 24,
                     minHeight: 280,
-                    background: colorBgContainer,
+                    // background: colorBgContainer,
                     borderRadius: borderRadiusLG,
                     display: "flex",
-                    gap: 46
+                    gap: 46,
+                    boxShadow: "0px 2px 12px #00000014",
+                    border: "1px solid #FCFCFC"
                 }}
             >
                 <CardsArea />

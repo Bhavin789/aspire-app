@@ -19,7 +19,7 @@ interface CarouselProps {
 const StyledCarousel = styled(AntdCarousel)`
     .slick-dots {
         position: absolute;
-        bottom: -30px;
+        bottom: -36px;
         li {
             width: 8px;
             height: 8px;
