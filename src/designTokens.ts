@@ -6,6 +6,7 @@ export const colorTokens = {
         textSecondary: "#AAAAAA",
         brand: "#01D167",
         border: "#F5F5F5",
+        error: "red",
         button: {
             primary: "#325BAF",
             brand: "#01D167"

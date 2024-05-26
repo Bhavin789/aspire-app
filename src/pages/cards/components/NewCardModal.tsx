@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
-import PrimaryButton from "../../../components/generic/PrimaryButton";
 import { styled } from "styled-components";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
+import { ValidationError, object, string } from "yup";
 
+import PrimaryButton from "../../../components/generic/PrimaryButton";
 import { generateRandomCreditCardDetails } from "../../../utils/getRandomCardDetails";
 import { ButtonVariant } from "../../../constants/common";
 import Input from "../../../components/generic/Input";
@@ -15,6 +16,9 @@ import plusIcon from "../../../assets/plus.svg";
 const ContentWrapper = styled.div`
     min-height: 50px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 `;
 
 const FooterWrapper = styled.div`
@@ -35,9 +39,14 @@ const StyledModal = styled(Modal)`
 
 const NewCardModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [cardName, setCardName] = useState("");
 
-    const [error, setError] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+    const [firstNameError, setFirstNameError] = useState("");
+    const [lastNameError, setLastNameError] = useState("");
+
+    const isAddButtonDisabled = !firstName || !lastName;
 
     const handleShowModal = () => {
         setIsModalOpen(true);
@@ -46,7 +55,24 @@ const NewCardModal: React.FC = () => {
     const dispatch = useDispatch();
 
     const handleOk = () => {
-        const cardDetails = generateRandomCreditCardDetails(cardName);
+        let hasError = false;
+        if (!firstName) {
+            hasError = true;
+            setFirstNameError("First name is a required field");
+        }
+
+        if (!lastName) {
+            hasError = true;
+            setLastNameError("Last name is a required field");
+        }
+
+        if (hasError) {
+            return;
+        }
+
+        const cardDetails = generateRandomCreditCardDetails(
+            `${firstName} ${lastName}`
+        );
         dispatch(cardsSlice.actions.appendCardDetails(cardDetails));
         setIsModalOpen(false);
     };
@@ -55,13 +81,41 @@ const NewCardModal: React.FC = () => {
         setIsModalOpen(false);
     };
 
-    const handleInputChange = debounce(
+    const handleFirstNameChange = debounce(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             const value = event.target.value;
-            setCardName(value);
+
+            if (!value) {
+                setFirstNameError("First name is a required field");
+            } else {
+                setFirstNameError("");
+            }
+            setFirstName(value);
         },
         500
     );
+
+    const handleLastNameChange = debounce(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+            const value = event.target.value;
+
+            if (!value) {
+                setLastNameError("First name is a required field");
+            } else {
+                setLastNameError("");
+            }
+
+            setLastName(value);
+        },
+        500
+    );
+
+    const handleReset = () => {
+        setFirstName("");
+        setLastName("");
+        setFirstNameError("");
+        setLastNameError("");
+    };
 
     const buttons = [
         <PrimaryButton
@@ -95,11 +149,18 @@ const NewCardModal: React.FC = () => {
                 centered={true}
                 destroyOnClose={true}
                 footer={<FooterWrapper>{buttons}</FooterWrapper>}
+                afterClose={handleReset}
             >
                 <ContentWrapper>
                     <Input
-                        placeholder="Enter card name"
-                        onChange={handleInputChange}
+                        placeholder="Enter first name"
+                        onChange={handleFirstNameChange}
+                        error={firstNameError}
+                    />
+                    <Input
+                        placeholder="Enter last name"
+                        onChange={handleLastNameChange}
+                        error={lastNameError}
                     />
                 </ContentWrapper>
             </StyledModal>
