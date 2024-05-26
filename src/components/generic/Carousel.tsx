@@ -61,6 +61,7 @@ const Carousel = ({ items, autoPlay = true, onChange }: CarouselProps) => {
             effect={"fade"}
             style={{ width: "414px", height: "248px", borderRadius: "8px" }}
             afterChange={onChange}
+            autoplaySpeed={2000}
         >
             {items.map((item, index) => {
                 return <div key={index}>{item}</div>;

@@ -49,3 +49,4 @@ Folder structure is as follows:
 3. Add UTs
 4. Refactor some code to add to appropriate folders
 5. Add lint support
+6. Implement react-router to configure routing in app

@@ -37,7 +37,7 @@ const SideMenu = ({
     isCollapsed: boolean;
     onLogoClick: () => void;
 }) => {
-    const [selectedItem, setSelectedItem] = useState("home");
+    const [selectedItem, setSelectedItem] = useState("cards");
 
     const handleMenuItemSelection = ({ key }: { key: string }) => {
         setSelectedItem(key);
