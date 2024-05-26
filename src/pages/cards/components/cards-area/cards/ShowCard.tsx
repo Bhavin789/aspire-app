@@ -14,13 +14,22 @@ const ShowCardText = styled.div`
     font-size: 12px;
     font-weight: 700;
     margin-left: 6px;
+    cursor: pointer;
 `;
 
-const ShowCard = () => {
+interface ShowCardProps {
+    onClick: () => void;
+    shouldShowCardNumber?: boolean;
+}
+
+const ShowCard = ({ onClick, shouldShowCardNumber }: ShowCardProps) => {
+    const showText = shouldShowCardNumber
+        ? "Hide card number"
+        : "Show card number";
     return (
         <ShowCardWrapper>
             <img src={eyeIcon} alt="show-card-icon" />
-            <ShowCardText>Show card number</ShowCardText>
+            <ShowCardText onClick={onClick}>{showText}</ShowCardText>
         </ShowCardWrapper>
     );
 };

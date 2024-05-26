@@ -44,7 +44,7 @@ Folder structure is as follows:
 
 ## Further Improvements
 
-1. Make current version more responsive with collapsible side nav
+1. Make current version more responsive with collapsible side nav, div overflows etc.
 2. Make Mobile version
 3. Add UTs
 4. Refactor some code to add to appropriate folders

@@ -4,6 +4,7 @@ const ShowCardNumberWrapper = styled.div`
     color: white;
     font-size: 14px;
     font-weight: 700;
+    letter-spacing: 4px;
 `;
 
 const HideCardNumberWrapper = styled.div`
@@ -42,20 +43,33 @@ const CardNumber = ({
     showNumber?: boolean;
     cardNumber: string;
 }) => {
-    const getCardNumber = () => {
-        if (showNumber) {
-            let chunks = cardNumber.match(/.{1,4}/g) || [];
-
-            console.log("chunks****", chunks);
-
-            return cardNumber.replace(/(.{4})/g, "$1 ");
-        }
-
-        return cardNumber.slice(-4).split("").join(" ");
+    const getCardNumber = ({
+        start,
+        end
+    }: {
+        start?: number;
+        end?: number;
+    }) => {
+        return cardNumber.slice(start, end);
     };
 
     if (showNumber) {
-        return <ShowCardNumberWrapper>{getCardNumber()}</ShowCardNumberWrapper>;
+        return (
+            <HideCardNumberWrapper>
+                <ShowCardNumberWrapper>
+                    {getCardNumber({ start: 0, end: 4 })}
+                </ShowCardNumberWrapper>
+                <ShowCardNumberWrapper>
+                    {getCardNumber({ start: 4, end: 8 })}
+                </ShowCardNumberWrapper>
+                <ShowCardNumberWrapper>
+                    {getCardNumber({ start: 8, end: 12 })}
+                </ShowCardNumberWrapper>
+                <ShowCardNumberWrapper>
+                    {getCardNumber({ start: 12, end: 16 })}
+                </ShowCardNumberWrapper>
+            </HideCardNumberWrapper>
+        );
     }
 
     return (
@@ -63,7 +77,9 @@ const CardNumber = ({
             <DotsGroup />
             <DotsGroup />
             <DotsGroup />
-            <ShowCardNumberWrapper>{getCardNumber()}</ShowCardNumberWrapper>
+            <ShowCardNumberWrapper>
+                {getCardNumber({ start: 12 })}
+            </ShowCardNumberWrapper>
         </HideCardNumberWrapper>
     );
 };

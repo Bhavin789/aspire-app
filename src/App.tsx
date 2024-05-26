@@ -19,7 +19,10 @@ const App: React.FC = () => {
 
     return (
         <FullWidthWrapper>
-            <Layout hasSider={true}>
+            <Layout
+                hasSider={true}
+                style={{ fontFamily: '"Open Sans", sans-serif' }}
+            >
                 <SideMenu
                     isCollapsed={isCollapsed}
                     onLogoClick={handleLogoClick}
@@ -27,7 +30,8 @@ const App: React.FC = () => {
                 <Layout
                     style={{
                         marginLeft: isCollapsed ? 80 : 340,
-                        background: "white"
+                        background: "white",
+                        fontFamily: '"Open Sans", sans-serif'
                     }}
                 >
                     <ContentWrapper>

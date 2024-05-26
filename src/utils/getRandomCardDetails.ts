@@ -11,7 +11,7 @@ const generateRandomNumber = (length: number): string => {
 const generateCardNumber = (): string => {
     let cardNumber = "";
     for (let i = 0; i < 4; i++) {
-        cardNumber += generateRandomNumber(4) + (i < 3 ? " " : "");
+        cardNumber += generateRandomNumber(4);
     }
     return cardNumber;
 };

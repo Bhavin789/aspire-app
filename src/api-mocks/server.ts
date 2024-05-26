@@ -28,13 +28,13 @@ const apiClient = <T>(url: string): Promise<T> => {
             data: [
                 {
                     cardName: "Bhavin Agarwal",
-                    cardNumber: "7433 4605 7924 7857",
+                    cardNumber: "7433460579247857",
                     cvv: 166,
                     expiryDate: "12/28"
                 },
                 {
                     cardName: "Anita Agarwal",
-                    cardNumber: "7132 2040 0984 6067",
+                    cardNumber: "7132204009846067",
                     cvv: 609,
                     expiryDate: "04/24"
                 }

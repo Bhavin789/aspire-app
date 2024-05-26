@@ -3,7 +3,7 @@ import Carousel from "../../../../../components/generic/Carousel";
 import { CARDS_LOCAL_STORAGE_KEY } from "../../../../../constants/common";
 import Card from "./Card";
 import ShowCard from "./ShowCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../../store/store";
 import { useCards } from "../../../../../hooks/api/useCards";
@@ -22,6 +22,8 @@ interface CardsCarouselProps {
 const CardsCarousel = ({ shouldFreezeCard }: CardsCarouselProps) => {
     const { data } = useCards({ userId: 1 });
 
+    const [shouldShowCardNumber, setShouldShowCardNumber] = useState(false);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -32,6 +34,10 @@ const CardsCarousel = ({ shouldFreezeCard }: CardsCarouselProps) => {
 
     const cards = useSelector((state: RootState) => state.cardsSlice.cards);
 
+    const handleShowCardNumber = () => {
+        setShouldShowCardNumber(prev => !prev);
+    };
+
     const cardComponents = cards.map(card => {
         const { cardName, cardNumber, expiryDate, cvv } = card;
         return (
@@ -40,13 +46,17 @@ const CardsCarousel = ({ shouldFreezeCard }: CardsCarouselProps) => {
                 cvv={cvv}
                 expiry={expiryDate}
                 cardNumber={cardNumber}
+                shouldShowCardNumber={shouldShowCardNumber}
             />
         );
     });
 
     return (
         <CardWrapper>
-            <ShowCard />
+            <ShowCard
+                onClick={handleShowCardNumber}
+                shouldShowCardNumber={shouldShowCardNumber}
+            />
             <Carousel items={cardComponents} autoPlay={!shouldFreezeCard} />
         </CardWrapper>
     );

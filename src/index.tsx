@@ -22,7 +22,7 @@ const queryClient = new QueryClient();
 const GlobalStyle = createGlobalStyle`
   body, html {
     height: 100%;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif !important;
   }
 
   #root {
