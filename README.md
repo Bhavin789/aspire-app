@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Aspire App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aspire app holds a static webpage for the `Cards` section where a user can see his/her account details like cards, recent transactions etc.
 
-## Available Scripts
 
-In the project directory, you can run:
+## How to start?
 
-### `yarn start`
+To run the app locally:
+1. Run `yarn` to install all dependencies
+2. Run `yarn start` to start the app on localhost
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To build the app:
+1. Run `yarn` build. It will transpile all the `TS` code `JS` inside a `build` folder
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deployment
 
-### `yarn test`
+The app is deployed using `Netlify`. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Link to the latest deployment: [https://main--bhavin-aspire-app.netlify.app/](https://main--bhavin-aspire-app.netlify.app/)
 
-### `yarn build`
+## Tools Used
+1. React
+2. react-query: Used to maintain API requests
+3. typescript
+4. styled-components: Used to styled native HTML elements
+5. redux-toolkit: A library built over redux for better and isolated state management
+6. antd: Used for OOTB components like Layout, Modal, Accordion, Carousel styled using styled-components .
+7. prettier: Used for formatting the code
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Folder structure is as follows: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. `src`: Holds all the code. It contains:
+   1. `api-mocks`: Contains a mock server utility to serve static data to the for the calls
+   2. `assets`: Contains all svgs
+   3. `components` : Contains all components that are generic in nature and can be used across pages
+   4. `constants`: Contains all the constants
+   5. `hooks` : Contains all api and custom hooks used in the app
+   6. `pages`: Contains various pages in the app. Each page has a folder with `pagename` and each folder has `PageName.tsx` file. It can also be accompanied by another `components` folder that are used within that page only. 
+   7. `store`: Contains `slices` of redux store. More to read [here](https://redux-toolkit.js.org/introduction/getting-started)
+   8. `types` : Holds generic types across. 
+   9. `utils` : Contains utility functions that can be used across pages.
 
-### `yarn eject`
+## Further Improvements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Make current version more responsive with collapsible side nav
+2. Make Mobile version
+3. Add UTs
+4. Refactor some code to add to appropriate folders
+5. Add lint support
