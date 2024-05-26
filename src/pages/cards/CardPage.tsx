@@ -87,7 +87,6 @@ const CardsPage = () => {
                 <TransactionWrapper>
                     <Accordion
                         text="Card Details"
-                        content={<TransactionsList />}
                         icon={
                             <AccordionIcon src={cardDetailsIcon} alt="logo" />
                         }

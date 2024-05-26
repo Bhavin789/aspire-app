@@ -31,6 +31,10 @@ const AccordionWrapper = styled.div`
     .ant-collapse-content {
         border-top: ${() => `1px solid ${colorTokens.light.border}`};
     }
+
+    &.ant-collapse-content-box {
+        padding: 24px;
+    }
 `;
 
 const AccordionHeaderWrapper = styled.div`
@@ -62,7 +66,7 @@ const Accordion = ({
 }: {
     text: string;
     icon?: JSX.Element;
-    content: JSX.Element;
+    content?: JSX.Element;
     isCollapsed?: boolean;
 }) => {
     const items: CollapseProps["items"] = [

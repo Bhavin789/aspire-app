@@ -9,7 +9,7 @@ import { TransactionType } from "../../../../constants/common";
 
 const TransactionWrapper = styled.div`
     display: flex;
-    padding: 16px 8px;
+    padding: 16px 0px;
     cursor: pointer;
     &:hover {
         background: ${() => colorTokens.light.transactions.hoverBackground};

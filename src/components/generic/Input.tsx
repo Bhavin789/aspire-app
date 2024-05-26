@@ -24,17 +24,10 @@ const StyledInput = styled(AntdInput)`
 interface InputProps {
     placeholder?: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    isFocussed?: boolean;
 }
 
-const Input = ({ placeholder, onChange, isFocussed = false }: InputProps) => {
-    return (
-        <StyledInput
-            placeholder={placeholder}
-            onChange={onChange}
-            autoFocus={true}
-        />
-    );
+const Input = ({ placeholder, onChange }: InputProps) => {
+    return <StyledInput placeholder={placeholder} onChange={onChange} />;
 };
 
 export default Input;

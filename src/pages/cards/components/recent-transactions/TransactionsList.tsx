@@ -5,9 +5,7 @@ import TransactionIcon from "./TransactionIcon";
 import { useRecentTransactions } from "../../../../hooks/api/useRecentTransactions";
 import { useMemo } from "react";
 
-const TransactionsListWrapper = styled.div`
-    padding: 38px 24px;
-`;
+const TransactionsListWrapper = styled.div``;
 
 const TransactionsList = () => {
     const { data } = useRecentTransactions({ userId: 1 });
