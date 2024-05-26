@@ -45,6 +45,7 @@ const TransactionsList = () => {
                         date={date}
                         meta={meta}
                         isLast={isLast}
+                        key={`${vendor}-${type}`}
                     />
                 );
             })}

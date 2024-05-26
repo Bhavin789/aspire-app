@@ -4,8 +4,10 @@ import { CARDS_LOCAL_STORAGE_KEY } from "../../../../../constants/common";
 import Card from "./Card";
 import ShowCard from "./ShowCard";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../../store/store";
+import { useCards } from "../../../../../hooks/api/useCards";
+import cardsSlice from "../../../../../store/slices/cardsSlice";
 
 const CardWrapper = styled.div`
     display: flex;
@@ -18,6 +20,16 @@ interface CardsCarouselProps {
 }
 
 const CardsCarousel = ({ shouldFreezeCard }: CardsCarouselProps) => {
+    const { data } = useCards({ userId: 1 });
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (data) {
+            dispatch(cardsSlice.actions.setCardDetails(data.data));
+        }
+    }, [data]);
+
     const cards = useSelector((state: RootState) => state.cardsSlice.cards);
 
     const cardComponents = cards.map(card => {

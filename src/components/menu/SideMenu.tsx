@@ -30,7 +30,13 @@ const SideMenuWrapper = styled.div`
     }
 `;
 
-const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {
+const SideMenu = ({
+    isCollapsed,
+    onLogoClick
+}: {
+    isCollapsed: boolean;
+    onLogoClick: () => void;
+}) => {
     const [selectedItem, setSelectedItem] = useState("home");
 
     const handleMenuItemSelection = ({ key }: { key: string }) => {
@@ -53,13 +59,14 @@ const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {
                     top: 0,
                     bottom: 0
                 }}
+                breakpoint="lg"
             >
-                <AspireSideLogo />
+                <AspireSideLogo isCollapsed={isCollapsed} />
                 <Menu
                     theme="dark"
                     style={{
                         background: colorTokens.light.sideMenu,
-                        marginLeft: "48px",
+                        marginLeft: isCollapsed ? "28px" : "48px",
                         width: "calc(100% - 48px)"
                     }}
                     mode="inline"

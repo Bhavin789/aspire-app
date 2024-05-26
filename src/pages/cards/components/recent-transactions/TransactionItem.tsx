@@ -3,11 +3,17 @@ import { colorTokens } from "../../../../designTokens";
 import Divider from "../../../../components/generic/Divider";
 
 import businessAndFinanceIcon from "../../../../assets/business-and-finance.svg";
+import nextIcon from "../../../../assets/next.svg";
+
 import { TransactionType } from "../../../../constants/common";
 
 const TransactionWrapper = styled.div`
     display: flex;
-    padding: 16px 0;
+    padding: 16px 8px;
+    cursor: pointer;
+    &:hover {
+        background: ${() => colorTokens.light.transactions.hoverBackground};
+    }
 `;
 
 const IconWrapper = styled.div`
@@ -35,6 +41,7 @@ const AmountText = styled.div<{ type: TransactionType }>`
             ? colorTokens.light.brand
             : colorTokens.light.textPrimary;
     }};
+    margin-left: auto;
 `;
 
 const VendorText = styled.div`
@@ -72,6 +79,10 @@ const DetailsIcon = styled.img`
     margin-bottom: 1px;
 `;
 
+const RightArrowIcon = styled.img`
+    margin-left: 8px;
+`;
+
 interface TransactionItemProps {
     icon: JSX.Element;
     vendor: string;
@@ -102,6 +113,7 @@ const TransactionItem = ({
                     <AmountWrapper>
                         <VendorText>{vendor}</VendorText>
                         <AmountText type={type}>{amountValue}</AmountText>
+                        <RightArrowIcon src={nextIcon} />
                     </AmountWrapper>
                     <DateText>{date}</DateText>
                     <DetailsWrapper>

@@ -4,3 +4,7 @@ export type CreditCardDetails = {
     expiryDate: string;
     cardName: string;
 };
+
+export interface CardsAPIResponse {
+    data: CreditCardDetails[];
+}

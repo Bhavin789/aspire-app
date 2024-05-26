@@ -63,6 +63,7 @@ const Tabs = ({ items, activeTab, onClick }: TabsProps) => {
                 const isActive = key === selectedTab;
                 return (
                     <Tab
+                        key={key}
                         isActive={isActive}
                         label={label}
                         tabKey={key}

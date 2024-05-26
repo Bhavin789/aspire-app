@@ -10,7 +10,7 @@ export const fetchRecentTransactions = async ({
     userId: number;
 }): Promise<RecentTransactionAPIResponse> => {
     const response = await apiClient<RecentTransactionAPIResponse>(
-        `${API_BASE_URL}${API_ROUTES.transactions.recent}`
+        `${API_BASE_URL}${API_ROUTES.account.transactions.recent}`
     );
 
     return response;

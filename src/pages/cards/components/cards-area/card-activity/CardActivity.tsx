@@ -40,6 +40,7 @@ const CardActivity = ({ onClick, cardActivities }: CardActivityProps) => {
                             icon={card.icon}
                             onClick={onClick}
                             itemKey={card.key}
+                            key={card.key}
                         />
                     );
                 })}

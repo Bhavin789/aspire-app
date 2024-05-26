@@ -41,7 +41,7 @@ const CardCVV = styled.div`
 `;
 
 const CardCVVWrapper = styled.span`
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: white;
     margin-top: -2px;

@@ -19,6 +19,9 @@ export const colorTokens = {
         },
         tabs: {
             border: "#23CEFD"
+        },
+        transactions: {
+            hoverBackground: "#f5f9ff"
         }
     },
     dark: {}

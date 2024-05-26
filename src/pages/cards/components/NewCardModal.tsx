@@ -3,18 +3,17 @@ import { Modal } from "antd";
 import PrimaryButton from "../../../components/generic/PrimaryButton";
 import { styled } from "styled-components";
 import debounce from "lodash.debounce";
-import { generateRandomCreditCardDetails } from "../../../utils/getRandomCardDetails";
-import { CreditCardDetails } from "../../../types/CardDetails";
-import {
-    ButtonVariant,
-    CARDS_LOCAL_STORAGE_KEY
-} from "../../../constants/common";
-import Input from "../../../components/generic/Input";
 import { useDispatch } from "react-redux";
+
+import { generateRandomCreditCardDetails } from "../../../utils/getRandomCardDetails";
+import { ButtonVariant } from "../../../constants/common";
+import Input from "../../../components/generic/Input";
 import cardsSlice from "../../../store/slices/cardsSlice";
 
+import plusIcon from "../../../assets/plus.svg";
+
 const ContentWrapper = styled.div`
-    min-height: 200px;
+    min-height: 50px;
     margin: auto;
 `;
 
@@ -69,11 +68,13 @@ const NewCardModal: React.FC = () => {
             text={"Cancel"}
             variant={ButtonVariant.primary}
             onClick={handleCancel}
+            key={"cancel"}
         />,
         <PrimaryButton
             text={"Add"}
             variant={ButtonVariant.brand}
             onClick={handleOk}
+            key={"add"}
         />
     ];
 
@@ -83,6 +84,7 @@ const NewCardModal: React.FC = () => {
                 text="New Card"
                 onClick={handleShowModal}
                 variant={ButtonVariant.primary}
+                icon={<img src={plusIcon} />}
             />
             <StyledModal
                 title="Add new card"

@@ -16,9 +16,9 @@ const TransactionIconWrapper = styled.div<{ type: VendorType }>`
 `;
 
 export const VendorTypeToIcon = {
-    [VendorType.ecom]: () => <img src={ecomIcon} alt="flight-icon" />,
+    [VendorType.ecom]: () => <img src={ecomIcon} alt="ecom-icon" />,
     [VendorType.flights]: () => <img src={flightIcon} alt="flight-icon" />,
-    [VendorType.alert]: () => <img src={megaphoneIcon} alt="flight-icon" />
+    [VendorType.alert]: () => <img src={megaphoneIcon} alt="megaphone-icon" />
 };
 
 const TransactionIcon = ({ vendorType }: { vendorType: VendorType }) => {

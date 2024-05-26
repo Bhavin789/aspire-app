@@ -14,6 +14,14 @@ const StyledButton = styled.button<{ variant: ButtonVariant }>`
     align-self: end;
     cursor: pointer;
     min-width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const IconWrapper = styled.span`
+    margin-right: 8px;
+    line-height: 0;
 `;
 
 interface PrimaryButtonProps {
@@ -31,6 +39,7 @@ const PrimaryButton = ({
 }: PrimaryButtonProps) => {
     return (
         <StyledButton onClick={onClick} variant={variant}>
+            {icon ? <IconWrapper>{icon}</IconWrapper> : null}
             {text}
         </StyledButton>
     );

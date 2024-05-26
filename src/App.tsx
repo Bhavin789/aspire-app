@@ -13,13 +13,20 @@ const ContentWrapper = styled.div`
 const App: React.FC = () => {
     const [isCollapsed, setCollapsed] = useState(false);
 
+    const handleLogoClick = () => {
+        setCollapsed(collapsed => !collapsed);
+    };
+
     return (
         <FullWidthWrapper>
             <Layout hasSider={true}>
-                <SideMenu isCollapsed={isCollapsed} />
+                <SideMenu
+                    isCollapsed={isCollapsed}
+                    onLogoClick={handleLogoClick}
+                />
                 <Layout
                     style={{
-                        marginLeft: 340,
+                        marginLeft: isCollapsed ? 80 : 340,
                         background: "white"
                     }}
                 >

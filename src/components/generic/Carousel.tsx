@@ -49,6 +49,10 @@ const StyledCarousel = styled(AntdCarousel)<{ isFrozen: boolean }>`
 `;
 
 const Carousel = ({ items, autoPlay = true, onChange }: CarouselProps) => {
+    /**
+     * TODO:
+     * Use a better `key` prop as `index` is a not recommended
+     */
     return (
         <StyledCarousel
             autoplay={autoPlay}
@@ -58,8 +62,8 @@ const Carousel = ({ items, autoPlay = true, onChange }: CarouselProps) => {
             style={{ width: "414px", height: "248px", borderRadius: "8px" }}
             afterChange={onChange}
         >
-            {items.map(item => {
-                return <div>{item}</div>;
+            {items.map((item, index) => {
+                return <div key={index}>{item}</div>;
             })}
         </StyledCarousel>
     );
