@@ -3,7 +3,6 @@ import { Modal } from "antd";
 import { styled } from "styled-components";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
-import { ValidationError, object, string } from "yup";
 
 import PrimaryButton from "../../../components/generic/PrimaryButton";
 import { generateRandomCreditCardDetails } from "../../../utils/getRandomCardDetails";

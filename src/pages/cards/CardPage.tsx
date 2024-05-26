@@ -49,7 +49,7 @@ const RecentTransactionWrapper = styled.div`
 
 const CardsPage = () => {
     const {
-        token: { colorBgContainer, borderRadiusLG }
+        token: { borderRadiusLG }
     } = theme.useToken();
 
     const handleTabClick = (key: string) => {

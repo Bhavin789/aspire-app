@@ -22,7 +22,7 @@ Link to the latest deployment: [https://main--bhavin-aspire-app.netlify.app/](ht
 1. React
 2. react-query: Used to maintain API requests
 3. typescript
-4. styled-components: Used to styled native HTML elements
+4. styled-components: Used to styled native HTML elements. **Note**: `Tailwind` might have been an easier choice here but since I have already tried it many times, wanted to give `styled-components` a shot knowing that this might impact some performance
 5. redux-toolkit: A library built over redux for better and isolated state management
 6. antd: Used for OOTB components like Layout, Modal, Accordion, Carousel styled using styled-components .
 7. prettier: Used for formatting the code
