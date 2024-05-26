@@ -57,11 +57,13 @@ const ExpandIcon = (panelProps: any) => {
 const Accordion = ({
     text,
     icon,
-    content
+    content,
+    isCollapsed
 }: {
     text: string;
     icon?: JSX.Element;
     content: JSX.Element;
+    isCollapsed?: boolean;
 }) => {
     const items: CollapseProps["items"] = [
         {
@@ -79,7 +81,7 @@ const Accordion = ({
     return (
         <AccordionWrapper>
             <Collapse
-                defaultActiveKey={["1"]}
+                defaultActiveKey={isCollapsed ? [] : ["1"]}
                 items={items}
                 expandIconPosition="end"
                 expandIcon={ExpandIcon}

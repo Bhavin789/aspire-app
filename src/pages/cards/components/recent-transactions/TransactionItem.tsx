@@ -24,6 +24,7 @@ const MetaWrapper = styled.div`
 
 const AmountWrapper = styled.div`
     display: flex;
+    justify-content: space-between;
 `;
 
 const AmountText = styled.div<{ type: TransactionType }>`
@@ -71,15 +72,7 @@ const DetailsIcon = styled.img`
     margin-bottom: 1px;
 `;
 
-const Transaction = ({
-    vendor,
-    date,
-    meta,
-    amount,
-    type,
-    icon,
-    isLast
-}: {
+interface TransactionItemProps {
     icon: JSX.Element;
     vendor: string;
     date: string;
@@ -87,7 +80,17 @@ const Transaction = ({
     amount: number;
     type: TransactionType;
     isLast?: boolean;
-}) => {
+}
+
+const TransactionItem = ({
+    vendor,
+    date,
+    meta,
+    amount,
+    type,
+    icon,
+    isLast
+}: TransactionItemProps) => {
     const amountValue =
         type === TransactionType.debit ? `-S$ ${amount}` : `+S$ ${amount}`;
 
@@ -96,7 +99,10 @@ const Transaction = ({
             <TransactionWrapper>
                 <IconWrapper>{icon}</IconWrapper>
                 <MetaWrapper>
-                    <VendorText>{vendor}</VendorText>
+                    <AmountWrapper>
+                        <VendorText>{vendor}</VendorText>
+                        <AmountText type={type}>{amountValue}</AmountText>
+                    </AmountWrapper>
                     <DateText>{date}</DateText>
                     <DetailsWrapper>
                         <DetailsIconWrapper>
@@ -108,13 +114,10 @@ const Transaction = ({
                         <DetailsText>{meta}</DetailsText>
                     </DetailsWrapper>
                 </MetaWrapper>
-                <AmountWrapper>
-                    <AmountText type={type}>{amountValue}</AmountText>
-                </AmountWrapper>
             </TransactionWrapper>
             {!isLast ? <Divider /> : null}
         </>
     );
 };
 
-export default Transaction;
+export default TransactionItem;

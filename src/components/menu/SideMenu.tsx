@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Layout, Menu } from "antd";
 import getSideMenuItems from "../../utils/getSideMenuItems";
@@ -18,7 +18,7 @@ const SideMenuWrapper = styled.div`
     }
     .ant-menu-item-selected {
         background: transparent;
-        color: #01d167;
+        color: ${() => colorTokens.light.brand};
         font-weight: 600;
     }
     .ant-layout-sider {
@@ -31,6 +31,12 @@ const SideMenuWrapper = styled.div`
 `;
 
 const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {
+    const [selectedItem, setSelectedItem] = useState("home");
+
+    const handleMenuItemSelection = ({ key }: { key: string }) => {
+        setSelectedItem(key);
+    };
+
     return (
         <SideMenuWrapper>
             <Sider
@@ -57,8 +63,10 @@ const SideMenu = ({ isCollapsed }: { isCollapsed: boolean }) => {
                         width: "calc(100% - 48px)"
                     }}
                     mode="inline"
-                    defaultSelectedKeys={["home"]}
-                    items={getSideMenuItems()}
+                    defaultSelectedKeys={[selectedItem]}
+                    selectedKeys={[selectedItem]}
+                    items={getSideMenuItems({ selectedItem })}
+                    onSelect={handleMenuItemSelection}
                 />
             </Sider>
         </SideMenuWrapper>

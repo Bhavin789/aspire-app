@@ -4,10 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import {
+    useQuery,
+    useMutation,
+    useQueryClient,
+    QueryClient,
+    QueryClientProvider
+} from "@tanstack/react-query";
+
 import { Provider } from "react-redux";
 
 import { createGlobalStyle } from "styled-components";
 import { store } from "./store/store";
+
+const queryClient = new QueryClient();
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -26,9 +36,11 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <GlobalStyle />
-        <Provider store={store}>
-            <App />
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </QueryClientProvider>
     </React.StrictMode>
 );
 

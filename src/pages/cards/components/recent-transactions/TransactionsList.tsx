@@ -1,52 +1,34 @@
 import { styled } from "styled-components";
 
-import { SettingOutlined } from "@ant-design/icons";
-import Transaction from "./Transaction";
-import {
-    TransactionType,
-    VendorType,
-    VendorTypeToColor
-} from "../../../../constants/common";
+import TransactionItem from "./TransactionItem";
 import TransactionIcon from "./TransactionIcon";
+import { useRecentTransactions } from "../../../../hooks/api/useRecentTransactions";
+import { useMemo } from "react";
 
 const TransactionsListWrapper = styled.div`
     padding: 38px 24px;
 `;
 
-const TransactionIconWrapper = styled.img<{ type: VendorType }>`
-    height: 48px;
-    width: 48px;
-    border-radius: 24px;
-    width: fit-content;
-    background: ${props => VendorTypeToColor[props.type]};
-`;
-
 const TransactionsList = () => {
-    const transactions: {
-        icon: JSX.Element;
-        vendor: string;
-        date: string;
-        meta: string;
-        amount: number;
-        type: TransactionType;
-    }[] = [
-        {
-            vendor: "Hamleys",
-            date: "2021/02/03",
-            meta: "Charged to debit card",
-            amount: 150,
-            type: TransactionType.debit,
-            icon: <TransactionIcon vendorType={VendorType.ecom} />
-        },
-        {
-            vendor: "Flights",
-            date: "2021/02/03",
-            meta: "Charged to debit card",
-            amount: 150,
-            type: TransactionType.credit,
-            icon: <TransactionIcon vendorType={VendorType.flights} />
-        }
-    ];
+    const { data } = useRecentTransactions({ userId: 1 });
+
+    const transactions = useMemo(() => {
+        return (
+            data?.data.map(transaction => {
+                const { vendor, date, meta, amount, type, vendorType } =
+                    transaction;
+
+                return {
+                    vendor,
+                    date,
+                    meta,
+                    amount,
+                    type,
+                    icon: <TransactionIcon vendorType={vendorType} />
+                };
+            }) || []
+        );
+    }, [data]);
 
     return (
         <TransactionsListWrapper>
@@ -55,7 +37,7 @@ const TransactionsList = () => {
                 const { vendor, amount, meta, type, icon, date } = transaction;
 
                 return (
-                    <Transaction
+                    <TransactionItem
                         vendor={vendor}
                         amount={amount}
                         type={type}

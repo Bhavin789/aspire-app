@@ -14,9 +14,13 @@ const contentStyle: React.CSSProperties = {
 interface CarouselProps {
     items: React.ReactNode[];
     autoPlay?: boolean;
+    onChange?: (index: number) => void;
 }
 
-const StyledCarousel = styled(AntdCarousel)`
+const StyledCarousel = styled(AntdCarousel)<{ isFrozen: boolean }>`
+    .slick-current {
+        opacity: ${props => (props.isFrozen ? "0.7 !important" : 1)};
+    }
     .slick-dots {
         position: absolute;
         bottom: -36px;
@@ -44,17 +48,21 @@ const StyledCarousel = styled(AntdCarousel)`
     }
 `;
 
-const Carousel = ({ items, autoPlay }: CarouselProps) => (
-    <StyledCarousel
-        autoplay={autoPlay}
-        fade={true}
-        effect={"fade"}
-        style={{ width: "414px", height: "248px", borderRadius: "8px" }}
-    >
-        {items.map(item => {
-            return <div>{item}</div>;
-        })}
-    </StyledCarousel>
-);
+const Carousel = ({ items, autoPlay = true, onChange }: CarouselProps) => {
+    return (
+        <StyledCarousel
+            autoplay={autoPlay}
+            isFrozen={!autoPlay}
+            fade={true}
+            effect={"fade"}
+            style={{ width: "414px", height: "248px", borderRadius: "8px" }}
+            afterChange={onChange}
+        >
+            {items.map(item => {
+                return <div>{item}</div>;
+            })}
+        </StyledCarousel>
+    );
+};
 
 export default Carousel;

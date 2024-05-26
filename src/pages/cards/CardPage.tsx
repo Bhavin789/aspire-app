@@ -10,6 +10,7 @@ import cardDetailsIcon from "../../assets/details.svg";
 import Tabs from "../../components/generic/Tabs";
 import NewCardModal from "./components/NewCardModal";
 import CardsArea from "./components/cards-area/CardsArea";
+import TransactionFooter from "./components/recent-transactions/TransactionFooter";
 
 const { Content } = Layout;
 
@@ -39,6 +40,11 @@ const TransactionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+`;
+
+const RecentTransactionWrapper = styled.div`
+    z-index: 1;
+    isolation: isolate;
 `;
 
 const CardsPage = () => {
@@ -73,7 +79,8 @@ const CardsPage = () => {
                     display: "flex",
                     gap: 46,
                     boxShadow: "0px 2px 12px #00000014",
-                    border: "1px solid #FCFCFC"
+                    border: "1px solid #FCFCFC",
+                    flexWrap: "wrap"
                 }}
             >
                 <CardsArea />
@@ -84,17 +91,23 @@ const CardsPage = () => {
                         icon={
                             <AccordionIcon src={cardDetailsIcon} alt="logo" />
                         }
+                        isCollapsed={true}
                     />
-                    <Accordion
-                        text="Recent transactions"
-                        content={<TransactionsList />}
-                        icon={
-                            <AccordionIcon
-                                src={recentTransactionsIcon}
-                                alt="logo"
+                    <div>
+                        <RecentTransactionWrapper>
+                            <Accordion
+                                text="Recent transactions"
+                                content={<TransactionsList />}
+                                icon={
+                                    <AccordionIcon
+                                        src={recentTransactionsIcon}
+                                        alt="logo"
+                                    />
+                                }
                             />
-                        }
-                    />
+                        </RecentTransactionWrapper>
+                        <TransactionFooter />
+                    </div>
                 </TransactionWrapper>
             </Content>
         </CardsPageWrapper>
